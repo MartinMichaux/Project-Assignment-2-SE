@@ -3,7 +3,6 @@ import java.awt.*;
 
 public class Test {
     public static JTextArea fileTxt;
-    public static JTextArea txt;
     public static JLabel label;
     public static JFrame frame;
     public static JPanel panel;
@@ -21,10 +20,8 @@ public class Test {
         menu.create();
         panel.add(menu.menuBar,BorderLayout.NORTH);
 
-        txt = new JTextArea("Here will come the SVG graph");
         fileTxt = new JTextArea("Here will come your path's file.");
-        label = new JLabel("Welcome to the Assignment 2 !!!");
-        panel.add(txt,BorderLayout.CENTER);
+        label = new JLabel("Welcome to the Assignment 2, here will appear the svg file.");
         panel.add(fileTxt,BorderLayout.SOUTH);
         panel.add(label,BorderLayout.CENTER);
 

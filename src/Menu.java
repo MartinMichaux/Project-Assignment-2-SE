@@ -21,6 +21,10 @@ public class Menu {
     // The SVG canvas.
     public static JSVGCanvas svgCanvas = new JSVGCanvas();
 
+    Dimension svgSize;
+
+    static int counter;
+
 
     public Menu(){
         menuBar = new JMenuBar();
@@ -30,6 +34,29 @@ public class Menu {
         JMenu fileMenu = new JMenu("File");
         menuBar.add(fileMenu);
 
+        JMenu viewMenu = new JMenu("View");
+        menuBar.add(viewMenu);
+
+        JMenuItem fullS = new JMenuItem("Full screen size");
+        class FullScreen implements ActionListener {
+            public void actionPerformed(ActionEvent event) {
+                Test.frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
+                Test.frame.setUndecorated(true);
+            }
+        }
+        ActionListener newSc = new FullScreen();
+        fullS.addActionListener(newSc);
+        viewMenu.add(fullS);
+
+        JMenuItem orS = new JMenuItem("Actual size");
+        class OriginalScreen implements ActionListener {
+            public void actionPerformed(ActionEvent event) {
+                Test.frame.setSize(svgSize);
+            }
+        }
+        ActionListener newScreen2 = new OriginalScreen();
+        orS.addActionListener(newScreen2);
+        viewMenu.add(orS);
 
         JMenuItem newItem = new JMenuItem("New File");
         class LoadListener implements ActionListener {
@@ -92,6 +119,10 @@ public class Menu {
             }
             public void gvtRenderingCompleted(GVTTreeRendererEvent e) {
                 Test.label.setText("");
+                if(counter==0){
+                    svgSize = svgCanvas.getSize();
+                }
+                counter++;
             }
         });
     }
