@@ -1,6 +1,7 @@
 import org.w3c.dom.Document;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.*;
@@ -28,11 +29,9 @@ public class Menu {
     public void create(){
         JMenu fileMenu = new JMenu("File");
         menuBar.add(fileMenu);
-        JMenuItem newItem = new JMenuItem("New File");
-        JMenuItem exitItem = new JMenuItem("Exit");
-        fileMenu.add(newItem);
-        fileMenu.add(exitItem);
 
+
+        JMenuItem newItem = new JMenuItem("New File");
         class LoadListener implements ActionListener {
             public void actionPerformed(ActionEvent event) {
                 JFileChooser chooser = new JFileChooser(System.getProperty("user.dir" )+System.getProperty("file.separator")+"src/assets");
@@ -41,7 +40,8 @@ public class Menu {
                 f.dispose();
                 if (res == JFileChooser.APPROVE_OPTION) {
                     File file = chooser.getSelectedFile();
-                    Test.fileTxt.setText("Here is your path's file : " + file.toString());
+                    Test.panel.add(svgCanvas, BorderLayout.CENTER);
+                    Test.fileTxt.setText("Path's file : " + file.toString());
                     try {
                         svgCanvas.setURI(file.toURL().toString());
                     } catch (IOException ex) {
@@ -52,7 +52,10 @@ public class Menu {
         }
         ActionListener newList = new LoadListener();
         newItem.addActionListener(newList);
+        fileMenu.add(newItem);
 
+
+        JMenuItem exitItem = new JMenuItem("Exit");
         class LoadListener1 implements ActionListener {
             public void actionPerformed(ActionEvent event) {
                 System.exit(0);
@@ -60,13 +63,7 @@ public class Menu {
         }
         ActionListener exitList = new LoadListener1();
         exitItem.addActionListener(exitList);
-
-
-
-
-
-
-
+        fileMenu.add(exitItem);
 
 
         // Set the JSVGCanvas listeners.
