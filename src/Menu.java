@@ -35,7 +35,7 @@ public class Menu {
 
         class LoadListener implements ActionListener {
             public void actionPerformed(ActionEvent event) {
-                JFileChooser chooser = new JFileChooser();
+                JFileChooser chooser = new JFileChooser(System.getProperty("user.dir" )+System.getProperty("file.separator")+"src/assets");
                 JFrame f = new JFrame();
                 int res = chooser.showSaveDialog(f);
                 f.dispose();
