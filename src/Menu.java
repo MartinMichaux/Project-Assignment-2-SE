@@ -48,7 +48,7 @@ public class Menu {
         fullS.addActionListener(newSc);
         viewMenu.add(fullS);
 
-        JMenuItem orS = new JMenuItem("Actual size");
+        JMenuItem orS = new JMenuItem("Original size");
         class OriginalScreen implements ActionListener {
             public void actionPerformed(ActionEvent event) {
                 Test.frame.setSize(svgSize);
@@ -68,7 +68,6 @@ public class Menu {
                 if (res == JFileChooser.APPROVE_OPTION) {
                     File file = chooser.getSelectedFile();
                     Test.panel.add(svgCanvas, BorderLayout.CENTER);
-                    Test.fileTxt.setText("Path's file : " + file.toString());
                     try {
                         svgCanvas.setURI(file.toURL().toString());
                     } catch (IOException ex) {

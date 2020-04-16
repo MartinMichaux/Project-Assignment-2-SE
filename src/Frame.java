@@ -10,7 +10,7 @@ public class Frame {
 
     public Frame(){
         frame = new JFrame("test");
-        frame.setSize(500,500);
+        frame.setSize(300,100);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setResizable(true);
 
