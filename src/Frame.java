@@ -1,7 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
 
-public class Frame {
+public class Frame extends JFrame {
 
     private JFrame frame;
     private JPanel panel;
@@ -9,7 +9,7 @@ public class Frame {
     private JTextArea fileTxt;
 
     public Frame(){
-        frame = new JFrame("test");
+        frame = new JFrame("SVG File Reader");
         frame.setSize(300,100);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setResizable(true);
@@ -30,6 +30,8 @@ public class Frame {
         panel.add(label,BorderLayout.CENTER);
 
         frame.add(panel);
+        frame.setVisible(true);
+
     }
 
     public JFrame getFrame() {

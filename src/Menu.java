@@ -21,7 +21,7 @@ public class Menu {
     // The SVG canvas.
     public static JSVGCanvas svgCanvas = new JSVGCanvas();
 
-    Dimension svgSize;
+    public static Dimension svgSize;
 
     static int counter;
 
@@ -38,55 +38,26 @@ public class Menu {
         menuBar.add(viewMenu);
 
         JMenuItem fullS = new JMenuItem("Full screen size");
-        class FullScreen implements ActionListener {
-            public void actionPerformed(ActionEvent event) {
-                Test.frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
-                Test.frame.setUndecorated(true);
-            }
-        }
+
         ActionListener newSc = new FullScreen();
         fullS.addActionListener(newSc);
         viewMenu.add(fullS);
 
         JMenuItem orS = new JMenuItem("Original size");
-        class OriginalScreen implements ActionListener {
-            public void actionPerformed(ActionEvent event) {
-                Test.frame.setSize(svgSize);
-            }
-        }
+
         ActionListener newScreen2 = new OriginalScreen();
         orS.addActionListener(newScreen2);
         viewMenu.add(orS);
 
         JMenuItem newItem = new JMenuItem("New File");
-        class LoadListener implements ActionListener {
-            public void actionPerformed(ActionEvent event) {
-                JFileChooser chooser = new JFileChooser(System.getProperty("user.dir" )+System.getProperty("file.separator")+"src/assets");
-                JFrame f = new JFrame();
-                int res = chooser.showSaveDialog(f);
-                f.dispose();
-                if (res == JFileChooser.APPROVE_OPTION) {
-                    File file = chooser.getSelectedFile();
-                    Test.panel.add(svgCanvas, BorderLayout.CENTER);
-                    try {
-                        svgCanvas.setURI(file.toURL().toString());
-                    } catch (IOException ex) {
-                        ex.printStackTrace();
-                    }
-                }
-            }
-        }
+
         ActionListener newList = new LoadListener();
         newItem.addActionListener(newList);
         fileMenu.add(newItem);
 
 
         JMenuItem exitItem = new JMenuItem("Exit");
-        class LoadListener1 implements ActionListener {
-            public void actionPerformed(ActionEvent event) {
-                System.exit(0);
-            }
-        }
+
         ActionListener exitList = new LoadListener1();
         exitItem.addActionListener(exitList);
         fileMenu.add(exitItem);
@@ -122,6 +93,7 @@ public class Menu {
                     svgSize = svgCanvas.getSize();
                 }
                 counter++;
+                //Test.frame.setSize(svgSize);
             }
         });
     }
