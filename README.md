@@ -11,6 +11,6 @@ Gary Goldblatt,
 Francois Wolters,
 Aaron Schapira.
 
-In this Github repository, you can find our Uml graph and our code for the project, that allow syou to get a SVG image to 
+In this Github repository, you can find our UML graph and our code for this project that allows you to get a SVG image to 
 import to your Java.Swing frame.
 
